@@ -1,7 +1,67 @@
-const { strict } = require("assert");
-const { default: mongoose, Schema } = require("mongoose");
+import {Schema, model, Types} from "mongoose"
 
-const restaurantsSchema = new mongoose.Schema(
+interface IRestaurant {
+    restaurantName: string,
+    address: [
+      {
+        district: string,
+        street: string,
+        building: string,
+        address: string,
+        location: {
+          type: string,
+          coordinates: number[],
+        },
+      },
+    ],
+    restaurantRate: {
+      foodRate: [
+        {
+          userId: string,
+          score: number,
+          comment: string,
+        },
+      ],
+      serviceRate: [
+        {
+          userId: string,
+          score: number,
+          comment: string,
+        },
+      ],
+      parkingRate: [
+        {
+          userId: string,
+          score: number,
+          comment: string,
+        },
+      ],
+      interierDesign: [
+        {
+          userId: string,
+          score: number,
+          comment: string,
+        },
+      ],
+    },
+    cuisineType: string[], // national
+    foodType: string[],
+    menuId: string,
+    contact: {
+      phone: number,
+      facebook: string,
+      Instagram: string,
+      link: string,
+    },
+    email: string,
+    img: string[],
+    schedule: {
+      weekday: { open: number, close: number },
+      weekend: { open: number, close: number },
+    }
+  }
+
+const restaurantsSchema = new Schema<IRestaurant>(
   {
     restaurantName: String,
     address: [
@@ -71,6 +131,6 @@ const restaurantsSchema = new mongoose.Schema(
   }
 );
 
-const Restaurants = mongoose.model("Restaurants", restaurantsSchema);
+const Restaurants = model<IRestaurant>("Restaurants", restaurantsSchema);
 
-module.exports = Restaurants;
+export default  Restaurants;

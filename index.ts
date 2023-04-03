@@ -1,19 +1,21 @@
-const express = require("express");
-const cors = require("cors");
-const app = express();
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+import express, { Response, Request, Express } from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+
+const app : Express = express();
+const port = process.env.PORT;
 
 dotenv.config();
+const uri:string = process.env.PORT || ""
 
 const restaurantRouter = require("./routes/restaurants.route.js");
-const port = process.env.PORT;
+
 mongoose
-  .connect(process.env.MONGO_DB_URI)
+  .connect(uri)
   .then(() => console.log(`Database connected successfully`))
   .catch((err) => console.log(err));
 
-app.use(cors());
+  
 app.use(express.json());
 app.use("/api", restaurantRouter);
 
