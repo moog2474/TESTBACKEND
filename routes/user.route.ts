@@ -5,9 +5,9 @@ import  {deleteUser, updateUser, login, register, getOne, getAll} from "../contr
 const route = Router();
 
 route.get("/users", getAll);
-route.get("/users/:_id", getOne);
-route.put("/users/:_id", updateUser);
-route.delete("/users/:_id", deleteUser);
+route.get("/user", getOne);
+route.put("/user", updateUser);
+route.delete("/user", deleteUser);
 
 route.post("/register", register);
 route.post("/login", login)
