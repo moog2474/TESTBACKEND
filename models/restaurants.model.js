@@ -61,8 +61,8 @@ const restaurantsSchema = new mongoose.Schema(
     },
     img: [],
     schedule: {
-      weekday: { open: Date, close: Date },
-      weekend: { open: Date, close: Date },
+      weekday: { open: Number, close: Number },
+      weekend: { open: Number, close: Number },
     },
   },
   {
