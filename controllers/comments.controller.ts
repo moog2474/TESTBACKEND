@@ -1,9 +1,9 @@
-import Restaurants from "../models/restaurants.model";
+import Comments from "../models/comments.model";
 import { Request, Response } from "express";
 
 const getAll = async (req: Request, res: Response) => {
   try {
-    const result = await Restaurants.find();
+    const result = await Comments.find();
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
@@ -11,44 +11,43 @@ const getAll = async (req: Request, res: Response) => {
 };
 
 const getOne = async (req: Request, res: Response) => {
-  const { id } = req.query;
+  const { _id } = req.query;
 
   try {
-    const result = await Restaurants.findById(id);
+    const result = await Comments.findById(_id);
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-const createRestaurant = async (req: Request, res: Response) => {
+const createComment = async (req: Request, res: Response) => {
   try {
-    const result = await Restaurants.create(req.body);
+    const result = await Comments.create(req.body);
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-const updateRestaurant = async (req: Request, res: Response) => {
-  const { id } = req.query;
-
-  try {
-    const result = await Restaurants.findByIdAndUpdate(id, req.body);
-    res.json({ status: true, result });
-  } catch (err) {
-    res.json({ status: false, message: err });
-  }
-};
-
-const deleteRestaurant = async (req: Request, res: Response) => {
+const updateComment = async (req: Request, res: Response) => {
   const { _id } = req.query;
   try {
-    const result = await Restaurants.findByIdAndDelete({ _id });
+    const result = await Comments.findByIdAndUpdate({ _id }, req.body);
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-export { deleteRestaurant, updateRestaurant, createRestaurant, getOne, getAll };
+const deleteComment = async (req: Request, res: Response) => {
+  const { _id } = req.query;
+  try {
+    const result = await Comments.findByIdAndDelete({ _id });
+    res.json({ status: true, result });
+  } catch (err) {
+    res.json({ status: false, message: err });
+  }
+};
+
+export { deleteComment, updateComment, createComment, getOne, getAll };

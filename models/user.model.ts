@@ -1,14 +1,15 @@
-import { Schema, model , Types } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 
-interface IUser{
-    name: string,
-    userName:  string,
-    email: string,
-    phone: number,
-    password: string,
-    point: number[],
-    userType: string,
-    img: string[],
+interface IUser {
+  name: string;
+  userName: string;
+  email: string;
+  phone: number;
+  password: string;
+  point: number[];
+  userType: string;
+  img: string[];
+  commentId: Types.ObjectId | null;
 }
 
 const userSchema = new Schema<IUser>(
@@ -31,10 +32,14 @@ const userSchema = new Schema<IUser>(
     password: String,
     point: [Number],
     userType: {
-      type: Schema.Types.Mixed,
+      type: String,
       enum: ["Admin", "User"],
+      default: "User",
     },
     img: [],
+    commentId: [
+      { type: Schema.Types.ObjectId, ref: "Comments", required: false },
+    ],
     // lastLoginDate: Date,
   },
   {
@@ -45,4 +50,4 @@ const userSchema = new Schema<IUser>(
 
 const Users = model<IUser>("Users", userSchema);
 
-export  default Users;
+export default Users;

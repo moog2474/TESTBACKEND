@@ -1,9 +1,9 @@
-import Restaurants from "../models/restaurants.model";
+import Menu from "../models/menu.model";
 import { Request, Response } from "express";
 
 const getAll = async (req: Request, res: Response) => {
   try {
-    const result = await Restaurants.find();
+    const result = await Menu.find();
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
@@ -14,41 +14,41 @@ const getOne = async (req: Request, res: Response) => {
   const { id } = req.query;
 
   try {
-    const result = await Restaurants.findById(id);
+    const result = await Menu.findById(id);
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-const createRestaurant = async (req: Request, res: Response) => {
+const createMenu = async (req: Request, res: Response) => {
   try {
-    const result = await Restaurants.create(req.body);
+    const result = await Menu.create(req.body);
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-const updateRestaurant = async (req: Request, res: Response) => {
+const updateMenu = async (req: Request, res: Response) => {
   const { id } = req.query;
 
   try {
-    const result = await Restaurants.findByIdAndUpdate(id, req.body);
+    const result = await Menu.findByIdAndUpdate(id, req.body);
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-const deleteRestaurant = async (req: Request, res: Response) => {
-  const { _id } = req.query;
+const deleteMenu = async (req: Request, res: Response) => {
+  const { id } = req.query;
   try {
-    const result = await Restaurants.findByIdAndDelete({ _id });
+    const result = await Menu.findByIdAndDelete({ id });
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-export { deleteRestaurant, updateRestaurant, createRestaurant, getOne, getAll };
+export { deleteMenu, updateMenu, createMenu, getOne, getAll };

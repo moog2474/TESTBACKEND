@@ -1,65 +1,42 @@
-import {Schema, model, Types} from "mongoose"
+import { Schema, model, Types } from "mongoose";
 
 interface IRestaurant {
-    restaurantName: string,
-    address: [
-      {
-        district: string,
-        street: string,
-        building: string,
-        address: string,
-        location: {
-          type: string,
-          coordinates: number[],
-        },
-      },
-    ],
-    restaurantRate: {
-      foodRate: [
-        {
-          userId: string,
-          score: number,
-          comment: string,
-        },
-      ],
-      serviceRate: [
-        {
-          userId: string,
-          score: number,
-          comment: string,
-        },
-      ],
-      parkingRate: [
-        {
-          userId: string,
-          score: number,
-          comment: string,
-        },
-      ],
-      interierDesign: [
-        {
-          userId: string,
-          score: number,
-          comment: string,
-        },
-      ],
-    },
-    cuisineType: string[], // national
-    foodType: string[],
-    menuId: string,
-    contact: {
-      phone: number,
-      facebook: string,
-      Instagram: string,
-      link: string,
-    },
-    email: string,
-    img: string[],
-    schedule: {
-      weekday: { open: number, close: number },
-      weekend: { open: number, close: number },
+  restaurantName: string;
+  address: [
+    {
+      district: string;
+      street: string;
+      building: string;
+      address: string;
+      location: {
+        type: string;
+        coordinates: number[];
+      };
     }
-  }
+  ];
+  restaurantRate: [
+    {
+      rateType: string;
+      userId: Types.ObjectId;
+      score: number;
+      comment: string;
+    }
+  ];
+  cuisineType: string[]; // national
+  foodType: string[]; //Ene hereg baina uu? Menu dotroo foodtype beverageType tai ym chin?
+  contact: {
+    phone: number;
+    facebook: string;
+    Instagram: string;
+    link: string;
+  };
+  email: string;
+  img: string[];
+  schedule: {
+    weekday: { open: number; close: number };
+    weekend: { open: number; close: number };
+  };
+}
 
 const restaurantsSchema = new Schema<IRestaurant>(
   {
@@ -71,44 +48,24 @@ const restaurantsSchema = new Schema<IRestaurant>(
         building: String,
         address: String,
         location: {
-          type: "Point",
+          type: { type: String, enum: ["Point"] },
           coordinates: [Number],
         },
       },
     ],
-    restaurantRate: {
-      foodRate: [
-        {
-          userId: [{ type: Schema.Types.ObjectId, ref: "Users" }],
-          score: Number,
-          comment: String,
+    restaurantRate: [
+      {
+        rateType: {
+          type: String,
+          enum: ["foodRate", "serviceRate", "parkingRate", "interierDesign"],
         },
-      ],
-      serviceRate: [
-        {
-          userId: [{ type: Schema.Types.ObjectId, ref: "Users" }],
-          score: Number,
-          comment: String,
-        },
-      ],
-      parkingRate: [
-        {
-          userId: [{ type: Schema.Types.ObjectId, ref: "Users" }],
-          score: Number,
-          comment: String,
-        },
-      ],
-      interierDesign: [
-        {
-          userId: [{ type: Schema.Types.ObjectId, ref: "Users" }],
-          score: Number,
-          comment: String,
-        },
-      ],
-    },
+        userId: { type: Schema.Types.ObjectId, ref: "Users" },
+        score: Number,
+        comment: String,
+      },
+    ],
     cuisineType: [String], // national
-    foodType: [],
-    menuId: [{ type: Schema.Types.ObjectId, ref: "Menu" }],
+    foodType: [String],
     contact: {
       phone: Number,
       facebook: String,
@@ -133,4 +90,65 @@ const restaurantsSchema = new Schema<IRestaurant>(
 
 const Restaurants = model<IRestaurant>("Restaurants", restaurantsSchema);
 
-export default  Restaurants;
+export default Restaurants;
+
+// interface IRestaurant {
+//   restaurantName: string;
+//   address: [
+//     {
+//       district: string;
+//       street: string;
+//       building: string;
+//       address: string;
+//       location: {
+//         type: string;
+//         coordinates: number[];
+//       };
+//     }
+//   ];
+//   restaurantRate: {
+//     foodRate: [
+//       {
+//         userId: string;
+//         score: number;
+//         comment: string;
+//       }
+//     ];
+//     serviceRate: [
+//       {
+//         userId: string;
+//         score: number;
+//         comment: string;
+//       }
+//     ];
+//     parkingRate: [
+//       {
+//         userId: string;
+//         score: number;
+//         comment: string;
+//       }
+//     ];
+//     interierDesign: [
+//       {
+//         userId: string;
+//         score: number;
+//         comment: string;
+//       }
+//     ];
+//   };
+//   cuisineType: string[]; // national
+//   foodType: string[]; //Ene hereg baina uu? Menu dotroo foodtype beverageType tai ym chin?
+//   menuId: Types.ObjectId;
+//   contact: {
+//     phone: number;
+//     facebook: string;
+//     Instagram: string;
+//     link: string;
+//   };
+//   email: string;
+//   img: string[];
+//   schedule: {
+//     weekday: { open: number; close: number };
+//     weekend: { open: number; close: number };
+//   };
+// }
