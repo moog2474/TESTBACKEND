@@ -1,55 +1,41 @@
-import  Users  from "../models/user.model";
-import  bcrypt  from "bcrypt"
-import  jwt from "jsonwebtoken";
+import Users from "../models/user.model";
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 
-const uri:string = process.env.TOKEN_SECRET_KEY || ""
+const uri: string = process.env.TOKEN_SECRET_KEY || ""
 
-const getAll = async (req : Request, res :Response) => {
+const getAll = async (req: Request, res: Response) => {
   const result = await Users.find({});
 
   if (result) {
-    res.status(200).send({
-      status: true,
-      result,
-    });
+    res.json({ status: true, result })
     return;
   } else {
-    res.status(500).send({
-      status: false,
-      message: "Users not found",
-    });
+    res.json({ status: false, message: "User not found" })
   }
   return;
 };
 
-const getOne = async (req : Request, res :Response) => {
+const getOne = async (req: Request, res: Response) => {
   const { _id } = req.query;
 
   const result = await Users.find({ _id });
 
   if (result) {
-    res.status(200).send({
-      status: true,
-      result,
-    });
+    res.json({ status: true, result })
     return;
   } else {
-    res.status(500).send({
-      status: false,
-      message: "User not found",
-    });
+    res.json({ status: false, message: "User not found" });
   }
   return;
 };
 
-const register = async (req : Request, res :Response) => {
+const register = async (req: Request, res: Response) => {
   const { firstName, lastName, userName, email, password } = req.body;
 
   if (!email || !password) {
-    res
-      .status(500)
-      .send({ status: false, message: "Medeelelee buren oruulna uu" });
+    res.json({ status: false, message: "Medeellee buren oruulna uu" })
     return;
   }
 
@@ -66,34 +52,23 @@ const register = async (req : Request, res :Response) => {
     const result = await newUser.save();
 
     if (result) {
-      res.status(200).send({
-        status: true,
-        message: "Amjilttai hadgalalgdlaa",
-      });
+      res.json({ status: true, message: "Amjilttai hadgalagdlaa" });
       return;
     } else {
-      res.status(500).send({
-        status: false,
-        message: "Hadgalahad aldaa garlaa",
-      });
+      res.json({ status: false, message: "Hadgalahad aldaa garlaa" });
       return;
     }
   } else {
-    res.status(500).send({
-      status: false,
-      message: "Password amjilttai encrypt hiigeegui bna",
-    });
+    res.json({ status: false, message: "Password amjilttai encrypt hiigeegui baina" });
     return;
   }
 };
 
-const login = async (req : Request, res :Response) => {
+const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    res
-      .status(500)
-      .send({ status: false, message: "Medeelelee buren oruulna uu" });
+    res.json({ status: false, message: "Medeellee buren oruulna uu" })
     return;
   }
 
@@ -104,21 +79,15 @@ const login = async (req : Request, res :Response) => {
       expiresIn: "2h",
     });
 
-    res
-      .status(200)
-      .send({ status: true, data: user, message: "Success", token });
-
+    res.json({ status: true, data: user, message: "Success", token })
     return;
   } else {
-    res.status(400).send({
-      status: false,
-      message: "user oldsongui ee, nuuts ug taarahgui bna",
-    });
+    res.json({ status: false, message: "email or password wrong" })
     return;
   }
 };
 
-const updateUser = async (req : Request, res :Response) => {
+const updateUser = async (req: Request, res: Response) => {
   const { _id } = req.query;
   try {
     const result = await Users.findByIdAndUpdate({ _id }, req.body);
@@ -128,7 +97,7 @@ const updateUser = async (req : Request, res :Response) => {
   }
 };
 
-const deleteUser = async (req : Request, res :Response) => {
+const deleteUser = async (req: Request, res: Response) => {
   const { _id } = req.query;
   try {
     const result = await Users.findByIdAndDelete({ _id });
@@ -138,4 +107,4 @@ const deleteUser = async (req : Request, res :Response) => {
   }
 };
 
-export {deleteUser, updateUser, login, register, getOne, getAll}
+export { deleteUser, updateUser, login, register, getOne, getAll }
