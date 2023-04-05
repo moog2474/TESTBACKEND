@@ -4,7 +4,7 @@ GET http://localhost:8080/api/restaurants
 
 
 ### 
-GET http://localhost:8080/api/restaurant?id=64181528254fc0ac96d2f320
+GET http://localhost:8080/api/restaurant?id=642d5427e36e9ce7441dc528
 
 
 //create
@@ -22,56 +22,32 @@ Content-Type:  application/json
         "address": "Shangri-La молл 3 давхарт",
         "location": {
           "type": "Point",
-          "coordinates": [47.9163252, 106.9188089],
-        },
-      },
+          "coordinates": [47.9163252, 106.9188089]
+        }
+      }
     ],
-    "restaurantRate": {
-      "foodRate": [
-        {
-          "userId": "dshgiuhweoruhnfsds",
-          "score": 4,
-          "comment": "Шөлтэй хоолнууд нь яг зураг шигээ сайхан гарсан. Амт сайхан байсан. ",
-        },
-      ],
-      "serviceRate": [
-        {
-          "userId": "dsagsdfgsdj",
-          "score": 4,
-          "comment": "Ширээгээ өдөр бол захиалаад очихгүй бол их хүнтэй байдаг юм байна лээ.",
-        },
-      ],
-      "parkingRate": [
-        {
-          "userId": "dsfgrewhugwepoirg",
-          "score": 2,
-          "comment": "Зогсоол нь үнэтэй юм байна лээ",
-        },
-      ],
-      "interierDesign": [
-        {
-          "userId": "dshflasuhfwewras",
-          "score": 4,
-          "comment": "Аймэр тухтай юм байна лэээ",
-        },
-      ],
-    },
-    "cuisineType": ["Mongolia"], // national select option baih 
+    "restaurantRate": [
+      {
+        "rateType": "foodRate",
+        "userId": "642d4cb3f18becf2efdc6a18",
+        "score": 5,
+        "comment": "anhnii comment shuu hool goy"
+      }
+    ],
+    "cuisineType": ["Mongolia"], 
     "foodType": ["Soup", "Others"],
-    "menuId": "jghwieuhrpgoewnrfgksd",
     "contact": {
-      "phone": 7000 7020,
+      "phone": 70007020,
       "facebook": "https://www.facebook.com/ArigAnya",
       "Instagram": "none",
-      "link": "none",
+      "link": "none"
     },
     "email":"office@ariganya.com",
     "img": ["linkHere"],
     "schedule": {
       "weekday": { "open": 10, "close": 22 },
-      "weekend": { "open": 10, "close": 20 },
-      // string bolgov
-    },
+      "weekend": { "open": 10, "close": 20 }
+    }
   }
 
 
@@ -79,8 +55,43 @@ Content-Type:  application/json
 DELETE http://localhost:8080/api/restaurant?id=64181528254fc0ac96d2f320
 
 ###
-PUT  http://localhost:8080/api/restaurant?_id=6418155a254fc0ac96d2f324
+PUT  http://localhost:8080/api/restaurant?id=642d5427e36e9ce7441dc528
 Content-Type: application/json
 
 { 
+   "restaurantName": "Anya Shangri-La",
+    "address": [
+      {
+        "district": "Сүхбаатар дүүрэг",
+        "street": "П.Гэндэнгийн гудамж",
+        "building": "Shangri-La",
+        "address": "Shangri-La молл 3 давхарт",
+        "location": {
+          "type": "Point",
+          "coordinates": [47.9163252, 106.9188089]
+        }
+      }
+    ],
+    "restaurantRate": [
+      {
+        "rateType": "foodRate",
+        "userId": "642d4cb3f18becf2efdc6a18",
+        "score": 5,
+        "comment": "anhnii comment shuu hool goy"
+      }
+    ],
+    "cuisineType": ["Mongolia"], 
+    "foodType": ["Soup", "Others"],
+    "contact": {
+      "phone": 70007020,
+      "facebook": "https://www.facebook.com/ArigAnya",
+      "Instagram": "none",
+      "link": "none"
+    },
+    "email":"office@ariganya.com",
+    "img": ["linkHere"],
+    "schedule": {
+      "weekday": { "open": 10, "close": 22 },
+      "weekend": { "open": 10, "close": 20 }
+    }
 }

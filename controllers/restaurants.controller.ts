@@ -1,7 +1,7 @@
-import Restaurants  from "../models/restaurants.model";
+import Restaurants from "../models/restaurants.model";
 import { Request, Response } from "express";
 
-const getAll = async (req : Request, res : Response) => {
+const getAll = async (req: Request, res: Response) => {
   try {
     const result = await Restaurants.find();
     res.json({ status: true, result });
@@ -10,18 +10,18 @@ const getAll = async (req : Request, res : Response) => {
   }
 };
 
-const getOne = async (req: Request, res : Response) => {
-  const { _id } = req.query;
+const getOne = async (req: Request, res: Response) => {
+  const { id } = req.query;
 
   try {
-    const result = await Restaurants.find({ _id });
+    const result = await Restaurants.findById(id);
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-const createRestaurant = async (req : Request, res : Response) => {
+const createRestaurant = async (req: Request, res: Response) => {
   try {
     const result = await Restaurants.create(req.body);
     res.json({ status: true, result });
@@ -30,18 +30,18 @@ const createRestaurant = async (req : Request, res : Response) => {
   }
 };
 
-const updateRestaurant = async (req : Request, res :Response) => {
-  const { _id } = req.query;
+const updateRestaurant = async (req: Request, res: Response) => {
+  const { id } = req.query;
 
   try {
-    const result = await Restaurants.findByIdAndUpdate({ _id }, req.body);
+    const result = await Restaurants.findByIdAndUpdate(id, req.body);
     res.json({ status: true, result });
   } catch (err) {
     res.json({ status: false, message: err });
   }
 };
 
-const deleteRestaurant = async (req : Request, res :Response) => {
+const deleteRestaurant = async (req: Request, res: Response) => {
   const { _id } = req.query;
   try {
     const result = await Restaurants.findByIdAndDelete({ _id });
@@ -51,4 +51,4 @@ const deleteRestaurant = async (req : Request, res :Response) => {
   }
 };
 
-export {deleteRestaurant, updateRestaurant, createRestaurant, getOne, getAll}
+export { deleteRestaurant, updateRestaurant, createRestaurant, getOne, getAll };

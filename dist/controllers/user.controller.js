@@ -18,79 +18,63 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const uri = process.env.TOKEN_SECRET_KEY || "";
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.default.find({});
+    const result = yield user_model_1.default.find();
     if (result) {
-        res.status(200).send({
-            status: true,
-            result,
-        });
+        res.json({ status: true, result });
         return;
     }
     else {
-        res.status(500).send({
-            status: false,
-            message: "Users not found",
-        });
+        res.json({ status: false, message: "Users not found" });
     }
     return;
 });
 exports.getAll = getAll;
 const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { _id } = req.query;
-    const result = yield user_model_1.default.find({ _id });
+    const { id } = req.query;
+    const result = yield user_model_1.default.findById(id);
     if (result) {
-        res.status(200).send({
-            status: true,
-            result,
-        });
+        res.json({ status: true, result });
         return;
     }
     else {
-        res.status(500).send({
-            status: false,
-            message: "User not found",
-        });
+        res.json({ status: false, message: "User not found" });
     }
     return;
 });
 exports.getOne = getOne;
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { firstName, lastName, userName, email, password } = req.body;
+    const { name, userName, email, phone, password, point, userType, img, commentId, } = req.body;
     if (!email || !password) {
-        res
-            .status(500)
-            .send({ status: false, message: "Medeelelee buren oruulna uu" });
+        res.json({ status: false, message: "Medeellee buren oruulna uu" });
         return;
     }
     const hashedPass = yield bcrypt_1.default.hash(password, 8);
     if (hashedPass) {
         const newUser = new user_model_1.default({
-            firstName,
-            lastName,
+            name,
             userName,
             email,
+            phone,
             password: hashedPass,
+            point,
+            userType,
+            img,
+            commentId,
         });
         const result = yield newUser.save();
         if (result) {
-            res.status(200).send({
-                status: true,
-                message: "Amjilttai hadgalalgdlaa",
-            });
+            res.json({ status: true, message: "Amjilttai hadgalagdlaa" });
             return;
         }
         else {
-            res.status(500).send({
-                status: false,
-                message: "Hadgalahad aldaa garlaa",
-            });
+            res.json({ status: false, message: "Hadgalahad aldaa garlaa" });
             return;
         }
     }
     else {
-        res.status(500).send({
+        res.json({
             status: false,
-            message: "Password amjilttai encrypt hiigeegui bna",
+            message: "Password amjilttai encrypt hiigeegui baina",
         });
         return;
     }
@@ -99,9 +83,7 @@ exports.register = register;
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     if (!email || !password) {
-        res
-            .status(500)
-            .send({ status: false, message: "Medeelelee buren oruulna uu" });
+        res.json({ status: false, message: "Medeellee buren oruulna uu" });
         return;
     }
     const user = yield user_model_1.default.findOne({ email });
@@ -109,35 +91,31 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const token = jsonwebtoken_1.default.sign({ user: user }, uri, {
             expiresIn: "2h",
         });
-        res
-            .status(200)
-            .send({ status: true, data: user, message: "Success", token });
+        res.json({ status: true, data: user, message: "Success", token });
         return;
     }
     else {
-        res.status(400).send({
-            status: false,
-            message: "user oldsongui ee, nuuts ug taarahgui bna",
-        });
+        res.json({ status: false, message: "email or password wrong" });
         return;
     }
 });
 exports.login = login;
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { _id } = req.query;
+    const { id } = req.query;
     try {
-        const result = yield user_model_1.default.findByIdAndUpdate({ _id }, req.body);
-        res.json({ status: false, result });
+        const result = yield user_model_1.default.findByIdAndUpdate(id, req.body);
+        res.json({ status: true, result });
     }
     catch (err) {
         res.json({ status: false, message: err });
     }
 });
 exports.updateUser = updateUser;
+// update huuchin huvilbaraa butsana
 const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { _id } = req.query;
+    const { id } = req.query;
     try {
-        const result = yield user_model_1.default.findByIdAndDelete({ _id });
+        const result = yield user_model_1.default.findByIdAndDelete(id);
         res.json({ status: false, result });
     }
     catch (err) {
