@@ -14,7 +14,7 @@ Content-Type:  application/json
 
 {
     "restaurantName": "Arig Anya Shangri-La",
-    "address": [
+    "address": 
       {
         "district": "Сүхбаатар дүүрэг",
         "street": "П.Гэндэнгийн гудамж",
@@ -24,8 +24,7 @@ Content-Type:  application/json
           "type": "Point",
           "coordinates": [47.9163252, 106.9188089]
         }
-      }
-    ],
+      },
     "restaurantRate": [
       {
         "rateType": "foodRate",
@@ -34,16 +33,16 @@ Content-Type:  application/json
         "comment": "anhnii comment shuu hool goy"
       }
     ],
-    "cuisineType": ["Mongolia"], 
-    "foodType": ["Soup", "Others"],
+    "cuisineType": ["Mongolia"],
     "contact": {
       "phone": 70007020,
       "facebook": "https://www.facebook.com/ArigAnya",
       "Instagram": "none",
       "link": "none"
     },
-    "email":"office@ariganya.com",
+    "email":"ffice@ariganya.com",
     "img": ["linkHere"],
+    "logoImg": "url here",
     "schedule": {
       "weekday": { "open": 10, "close": 22 },
       "weekend": { "open": 10, "close": 20 }
@@ -60,7 +59,7 @@ Content-Type: application/json
 
 { 
    "restaurantName": "Anya Shangri-La",
-    "address": [
+    "address": 
       {
         "district": "Сүхбаатар дүүрэг",
         "street": "П.Гэндэнгийн гудамж",
@@ -70,8 +69,7 @@ Content-Type: application/json
           "type": "Point",
           "coordinates": [47.9163252, 106.9188089]
         }
-      }
-    ],
+      },
     "restaurantRate": [
       {
         "rateType": "foodRate",
@@ -81,15 +79,15 @@ Content-Type: application/json
       }
     ],
     "cuisineType": ["Mongolia"], 
-    "foodType": ["Soup", "Others"],
     "contact": {
       "phone": 70007020,
       "facebook": "https://www.facebook.com/ArigAnya",
       "Instagram": "none",
       "link": "none"
     },
-    "email":"office@ariganya.com",
+    "email":"ffice@ariganya.com",
     "img": ["linkHere"],
+    "logoImg": "url here"
     "schedule": {
       "weekday": { "open": 10, "close": 22 },
       "weekend": { "open": 10, "close": 20 }

@@ -3,18 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const restaurantsSchema = new mongoose_1.Schema({
     restaurantName: String,
-    address: [
-        {
-            district: String,
-            street: String,
-            building: String,
-            address: String,
-            location: {
-                type: { type: String, enum: ["Point"] },
-                coordinates: [Number],
-            },
+    address: {
+        district: String,
+        street: String,
+        building: String,
+        address: String,
+        location: {
+            type: { type: String, enum: ["Point"] },
+            coordinates: [Number],
         },
-    ],
+    },
+    menuId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Menus", required: false },
     restaurantRate: [
         {
             rateType: {
@@ -27,7 +26,7 @@ const restaurantsSchema = new mongoose_1.Schema({
         },
     ],
     cuisineType: [String],
-    foodType: [String],
+    // foodType: [String],
     contact: {
         phone: Number,
         facebook: String,
@@ -38,7 +37,8 @@ const restaurantsSchema = new mongoose_1.Schema({
         type: String,
         unique: true,
     },
-    img: [],
+    img: [String],
+    logoImg: { type: String, required: false },
     schedule: {
         weekday: { open: Number, close: Number },
         weekend: { open: Number, close: Number },

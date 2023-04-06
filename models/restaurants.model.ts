@@ -2,18 +2,17 @@ import { Schema, model, Types } from "mongoose";
 
 interface IRestaurant {
   restaurantName: string;
-  address: [
-    {
-      district: string;
-      street: string;
-      building: string;
-      address: string;
-      location: {
-        type: string;
-        coordinates: number[];
-      };
-    }
-  ];
+  address: {
+    district: string;
+    street: string;
+    building: string;
+    address: string;
+    location: {
+      type: string;
+      coordinates: number[];
+    };
+  };
+  menuId: Types.ObjectId | null;
   restaurantRate: [
     {
       rateType: string;
@@ -23,7 +22,7 @@ interface IRestaurant {
     }
   ];
   cuisineType: string[]; // national
-  foodType: string[]; //Ene hereg baina uu? Menu dotroo foodtype beverageType tai ym chin?
+  // foodType: string[]; //Ene hereg baina uu? Menu dotroo foodtype beverageType tai ym chin?
   contact: {
     phone: number;
     facebook: string;
@@ -32,6 +31,7 @@ interface IRestaurant {
   };
   email: string;
   img: string[];
+  logoImg: string | null;
   schedule: {
     weekday: { open: number; close: number };
     weekend: { open: number; close: number };
@@ -41,18 +41,17 @@ interface IRestaurant {
 const restaurantsSchema = new Schema<IRestaurant>(
   {
     restaurantName: String,
-    address: [
-      {
-        district: String,
-        street: String,
-        building: String,
-        address: String,
-        location: {
-          type: { type: String, enum: ["Point"] },
-          coordinates: [Number],
-        },
+    address: {
+      district: String,
+      street: String,
+      building: String,
+      address: String,
+      location: {
+        type: { type: String, enum: ["Point"] },
+        coordinates: [Number],
       },
-    ],
+    },
+    menuId: { type: Schema.Types.ObjectId, ref: "Menus", required: false },
     restaurantRate: [
       {
         rateType: {
@@ -65,7 +64,7 @@ const restaurantsSchema = new Schema<IRestaurant>(
       },
     ],
     cuisineType: [String], // national
-    foodType: [String],
+    // foodType: [String],
     contact: {
       phone: Number,
       facebook: String,
@@ -76,7 +75,8 @@ const restaurantsSchema = new Schema<IRestaurant>(
       type: String,
       unique: true,
     },
-    img: [],
+    img: [String],
+    logoImg: { type: String, required: false },
     schedule: {
       weekday: { open: Number, close: Number },
       weekend: { open: Number, close: Number },
