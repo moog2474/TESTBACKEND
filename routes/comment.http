@@ -12,19 +12,19 @@ GET http://localhost:8080/api/comment?id=64181528254fc0ac96d2f320
 POST http://localhost:8080/api/comment
 Content-Type:  application/json
 
-{
+# {
+#     "restaurantId": "642d5427e36e9ce7441dc528",
+#     "comment": "good",
+#     "rate": 5
+#   }
+
+
+  {
     "restaurantId": "642d5427e36e9ce7441dc528",
+    "userId": "642d4cb3f18becf2efdc6a18",
     "comment": "good",
     "rate": 5
   }
-
-
-  # {
-  #   "restaurantId": "642d5427e36e9ce7441dc528",
-  #   # "userId": "642d4cb3f18becf2efdc6a18",
-  #   "comment": "good",
-  #   "rate": 5
-  # }
 
 ###
 DELETE http://localhost:8080/api/comment?id=64181528254fc0ac96d2f320

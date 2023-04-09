@@ -12,7 +12,6 @@ interface IRestaurant {
       coordinates: number[];
     };
   };
-  menuId: Types.ObjectId | null;
   restaurantRate: [
     {
       rateType: string;
@@ -51,7 +50,6 @@ const restaurantsSchema = new Schema<IRestaurant>(
         coordinates: [Number],
       },
     },
-    menuId: { type: Schema.Types.ObjectId, ref: "Menus", required: false },
     restaurantRate: [
       {
         rateType: {

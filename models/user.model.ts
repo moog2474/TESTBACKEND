@@ -9,7 +9,6 @@ interface IUser {
   point: number[];
   userType: string;
   img: string[];
-  commentId: Types.ObjectId | null;
 }
 
 const userSchema = new Schema<IUser>(
@@ -37,9 +36,6 @@ const userSchema = new Schema<IUser>(
       default: "User",
     },
     img: [],
-    commentId: [
-      { type: Schema.Types.ObjectId, ref: "Comments", required: false },
-    ],
     // lastLoginDate: Date,
   },
   {
