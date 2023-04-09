@@ -2,7 +2,7 @@ import { Schema, model, Types } from "mongoose";
 
 interface IMenu {
   _id: string;
-  // restaurantId: Types.ObjectId;
+  restaurantId: Types.ObjectId;
   food: [
     {
       foodName: string;
@@ -26,7 +26,7 @@ interface IMenu {
 }
 
 const menuSchema = new Schema<IMenu>({
-  // restaurantId: [{ type: Schema.Types.ObjectId, ref: "Restaurants" }],
+  restaurantId: [{ type: Schema.Types.ObjectId, ref: "Restaurants" }],
   food: [
     {
       foodName: String,

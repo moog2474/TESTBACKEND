@@ -4,7 +4,7 @@ interface IComment {
   _id: string;
   restaurantId: Types.ObjectId;
   foodId: Types.ObjectId | null;
-  //    userId: Types.ObjectId;
+  userId: Types.ObjectId;
   comment: string | null;
   rate: number | null;
 }
@@ -12,7 +12,7 @@ interface IComment {
 const commentSchema = new Schema<IComment>({
   restaurantId: { type: Schema.Types.ObjectId, ref: "Restaurants" },
   foodId: { type: Schema.Types.ObjectId, ref: "Menu" },
-  // userId: { type: Schema.Types.ObjectId, ref: "Users" },
+  userId: { type: Schema.Types.ObjectId, ref: "Users" },
   comment: String,
   rate: Number,
 });
