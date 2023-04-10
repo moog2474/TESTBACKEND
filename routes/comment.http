@@ -4,7 +4,7 @@ GET http://localhost:8080/api/comments
 
 
 ### 
-GET http://localhost:8080/api/comment?id=642d5973e3f5928068566f8e
+GET http://localhost:8080/api/comment?id=642d5973e3f5928068566f8a
 
 
 //create
@@ -27,11 +27,12 @@ Content-Type:  application/json
   }
 
 ###
-DELETE http://localhost:8080/api/comment?id=643393302cb9fd40b8b0b66a
+DELETE http://localhost:8080/api/comment?id=643393302cb9fd40b8b0b66c
 
 ###
-PUT  http://localhost:8080/api/comment?_id=642d5973e3f5928068566f8a
+PUT  http://localhost:8080/api/comment?id=642d5973e3f5928068566f8e
 Content-Type: application/json
 
 { 
+  "comment": "not good"
 }

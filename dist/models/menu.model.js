@@ -38,6 +38,8 @@ const menuSchema = new mongoose_1.Schema({
             ingredients: [{ type: String, required: false }],
         },
     ],
+}, {
+    timestamps: true,
 });
 const Menu = (0, mongoose_1.model)("Menus", menuSchema);
 exports.default = Menu;

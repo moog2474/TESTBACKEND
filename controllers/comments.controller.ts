@@ -14,8 +14,13 @@ const getOne = async (req: Request, res: Response) => {
   const { id } = req.query;
 
   try {
-    const result = await Comments.findById(id);
-    res.json({ status: true, result });
+    const data = await Comments.findById(id);
+    if (data) {
+      const result = await Comments.findById(id);
+      res.json({ status: true, result });
+    } else {
+      res.json({ status: false, message: "Not Found" });
+    }
   } catch (err) {
     res.json({ status: false, message: err });
   }
@@ -34,12 +39,12 @@ const updateComment = async (req: Request, res: Response) => {
   const { id } = req.query;
 
   try {
-    const checkId = await Comments.findById(id)
+    const checkId = await Comments.findById(id);
     if (checkId) {
       const result = await Comments.findByIdAndUpdate(id, req.body);
-      res.json({ status: true, result: result })
+      res.json({ status: true, result: result });
     } else {
-      res.json({ status: false, result: "Comment not found" })
+      res.json({ status: false, result: "Comment not found" });
     }
   } catch (err) {
     res.json({ status: false, message: err });
@@ -49,12 +54,12 @@ const updateComment = async (req: Request, res: Response) => {
 const deleteComment = async (req: Request, res: Response) => {
   const { id } = req.query;
   try {
-    const checkId = await Comments.findById(id)
+    const checkId = await Comments.findById(id);
     if (checkId) {
       const result = await Comments.findByIdAndDelete(id);
-      res.json({ status: true, result: result })
+      res.json({ status: true, result: result });
     } else {
-      res.json({ status: false, result: "Comment not found" })
+      res.json({ status: false, result: "Comment not found" });
     }
   } catch (err) {
     res.json({ status: false, message: err });

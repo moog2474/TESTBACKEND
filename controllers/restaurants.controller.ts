@@ -14,8 +14,13 @@ const getOne = async (req: Request, res: Response) => {
   const { id } = req.query;
 
   try {
-    const result = await Restaurants.findById(id);
-    res.json({ status: true, result });
+    const data = await Restaurants.findById(id);
+    if (data) {
+      const result = await Restaurants.findById(id);
+      res.json({ status: true, result });
+    } else {
+      res.json({ status: false, message: "Not Found" });
+    }
   } catch (err) {
     res.json({ status: false, message: err });
   }
@@ -34,12 +39,12 @@ const updateRestaurant = async (req: Request, res: Response) => {
   const { id } = req.query;
 
   try {
-    const checkId = await Restaurants.findById(id)
+    const checkId = await Restaurants.findById(id);
     if (checkId) {
       const result = await Restaurants.findByIdAndUpdate(id, req.body);
       res.json({ status: true, result });
     } else {
-      res.json({ status: false, message: "Restaurant not found" })
+      res.json({ status: false, message: "Restaurant not found" });
     }
   } catch (err) {
     res.json({ status: false, message: err });
@@ -52,9 +57,9 @@ const deleteRestaurant = async (req: Request, res: Response) => {
     const checkId = await Restaurants.findById(id);
     if (checkId) {
       const result = await Restaurants.findByIdAndDelete(id);
-      res.json({ status: true, result })
+      res.json({ status: true, result });
     } else {
-      res.json({ status: false, message: "Restaurant not found" })
+      res.json({ status: false, message: "Restaurant not found" });
     }
   } catch (err) {
     res.json({ status: false, message: err });

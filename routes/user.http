@@ -4,7 +4,7 @@ GET http://localhost:8080/api/users
 
 
 ### 
-GET http://localhost:8080/api/user?id=642d4cb3f18becf2efdc6a18
+GET http://localhost:8080/api/user?id=642e5555531d9b7f9bdaef24
 
 
 //create
@@ -14,8 +14,8 @@ Content-Type:  application/json
 
 {
   "name": "Erdenedari",
-  "userName": "Daria1",
-  "email": "ch.rdenedari0601@gmail.com",
+  "userName": "Daria2",
+  "email": "ch.erdenedar0601@gmail.com",
   "phone": 86238974,
   "password": "Erdenedari123!",
   "point": [0],
@@ -24,16 +24,16 @@ Content-Type:  application/json
   }
 
 ###
-DELETE http://localhost:8080/api/user?id=64181528254fc0ac96d2f320
+DELETE http://localhost:8080/api/user?id=6433ae2da8400d30484a9e1b
 
 ###
-PUT  http://localhost:8080/api/user?id=642d4cb3f18becf2efdc6a18
+PUT  http://localhost:8080/api/user?id=642e5555531d9b7f9bdaef21
 Content-Type: application/json
 
 {
   "name": "Erdenedari",
   "userName": "Daria61",
-  "email": "ch.erdenedari0601@gmail.com",
+
   "phone": 86238974,
   "password": "Erdenedari123!",
   "point": [0],
