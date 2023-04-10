@@ -3,51 +3,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const restaurantsSchema = new mongoose_1.Schema({
     restaurantName: String,
-    address: [
+    address: {
+        district: String,
+        street: String,
+        building: String,
+        address: String,
+        location: {
+            type: { type: String, enum: ["Point"] },
+            coordinates: [Number],
+        },
+    },
+    restaurantRate: [
         {
-            district: String,
-            street: String,
-            building: String,
-            address: String,
-            location: {
-                type: "Point",
-                coordinates: [Number],
+            rateType: {
+                type: String,
+                enum: ["foodRate", "serviceRate", "parkingRate", "interierDesign"],
             },
+            userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+            score: Number,
+            comment: String,
         },
     ],
-    restaurantRate: {
-        foodRate: [
-            {
-                userId: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users" }],
-                score: Number,
-                comment: String,
-            },
-        ],
-        serviceRate: [
-            {
-                userId: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users" }],
-                score: Number,
-                comment: String,
-            },
-        ],
-        parkingRate: [
-            {
-                userId: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users" }],
-                score: Number,
-                comment: String,
-            },
-        ],
-        interierDesign: [
-            {
-                userId: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Users" }],
-                score: Number,
-                comment: String,
-            },
-        ],
-    },
     cuisineType: [String],
-    foodType: [],
-    menuId: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Menu" }],
+    // foodType: [String],
     contact: {
         phone: Number,
         facebook: String,
@@ -58,7 +36,8 @@ const restaurantsSchema = new mongoose_1.Schema({
         type: String,
         unique: true,
     },
-    img: [],
+    img: [String],
+    logoImg: { type: String, required: false },
     schedule: {
         weekday: { open: Number, close: Number },
         weekend: { open: Number, close: Number },
@@ -69,3 +48,63 @@ const restaurantsSchema = new mongoose_1.Schema({
 });
 const Restaurants = (0, mongoose_1.model)("Restaurants", restaurantsSchema);
 exports.default = Restaurants;
+// interface IRestaurant {
+//   restaurantName: string;
+//   address: [
+//     {
+//       district: string;
+//       street: string;
+//       building: string;
+//       address: string;
+//       location: {
+//         type: string;
+//         coordinates: number[];
+//       };
+//     }
+//   ];
+//   restaurantRate: {
+//     foodRate: [
+//       {
+//         userId: string;
+//         score: number;
+//         comment: string;
+//       }
+//     ];
+//     serviceRate: [
+//       {
+//         userId: string;
+//         score: number;
+//         comment: string;
+//       }
+//     ];
+//     parkingRate: [
+//       {
+//         userId: string;
+//         score: number;
+//         comment: string;
+//       }
+//     ];
+//     interierDesign: [
+//       {
+//         userId: string;
+//         score: number;
+//         comment: string;
+//       }
+//     ];
+//   };
+//   cuisineType: string[]; // national
+//   foodType: string[]; //Ene hereg baina uu? Menu dotroo foodtype beverageType tai ym chin?
+//   menuId: Types.ObjectId;
+//   contact: {
+//     phone: number;
+//     facebook: string;
+//     Instagram: string;
+//     link: string;
+//   };
+//   email: string;
+//   img: string[];
+//   schedule: {
+//     weekday: { open: number; close: number };
+//     weekend: { open: number; close: number };
+//   };
+// }

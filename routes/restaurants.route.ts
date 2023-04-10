@@ -1,5 +1,11 @@
-import {Router} from "express"
-import  {deleteRestaurant, updateRestaurant, createRestaurant, getOne, getAll} from "../controllers/restaurants.controller";
+import { Router } from "express";
+import {
+  deleteRestaurant,
+  updateRestaurant,
+  createRestaurant,
+  getOne,
+  getAll,
+} from "../controllers/restaurants.controller";
 
 const route = Router();
 
@@ -9,4 +15,4 @@ route.post("/restaurant", createRestaurant);
 route.put("/restaurant", updateRestaurant);
 route.delete("/restaurant", deleteRestaurant);
 
-export default route
+export default route;

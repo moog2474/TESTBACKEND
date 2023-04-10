@@ -12,11 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAll = exports.getOne = exports.createRestaurant = exports.updateRestaurant = exports.deleteRestaurant = void 0;
-const restaurants_model_1 = __importDefault(require("../models/restaurants.model"));
+exports.getAll = exports.getOne = exports.createComment = exports.updateComment = exports.deleteComment = void 0;
+const comments_model_1 = __importDefault(require("../models/comments.model"));
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield restaurants_model_1.default.find();
+        const result = yield comments_model_1.default.find();
         res.json({ status: true, result });
     }
     catch (err) {
@@ -27,7 +27,7 @@ exports.getAll = getAll;
 const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     try {
-        const result = yield restaurants_model_1.default.findById(id);
+        const result = yield comments_model_1.default.findById(id);
         res.json({ status: true, result });
     }
     catch (err) {
@@ -35,47 +35,47 @@ const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getOne = getOne;
-const createRestaurant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield restaurants_model_1.default.create(req.body);
+        const result = yield comments_model_1.default.create(req.body);
         res.json({ status: true, result });
     }
     catch (err) {
         res.json({ status: false, message: err });
     }
 });
-exports.createRestaurant = createRestaurant;
-const updateRestaurant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.createComment = createComment;
+const updateComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     try {
-        const checkId = yield restaurants_model_1.default.findById(id);
+        const checkId = yield comments_model_1.default.findById(id);
         if (checkId) {
-            const result = yield restaurants_model_1.default.findByIdAndUpdate(id, req.body);
-            res.json({ status: true, result });
+            const result = yield comments_model_1.default.findByIdAndUpdate(id, req.body);
+            res.json({ status: true, result: result });
         }
         else {
-            res.json({ status: false, message: "Restaurant not found" });
+            res.json({ status: false, result: "Comment not found" });
         }
     }
     catch (err) {
         res.json({ status: false, message: err });
     }
 });
-exports.updateRestaurant = updateRestaurant;
-const deleteRestaurant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.updateComment = updateComment;
+const deleteComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     try {
-        const checkId = yield restaurants_model_1.default.findById(id);
+        const checkId = yield comments_model_1.default.findById(id);
         if (checkId) {
-            const result = yield restaurants_model_1.default.findByIdAndDelete(id);
-            res.json({ status: true, result });
+            const result = yield comments_model_1.default.findByIdAndDelete(id);
+            res.json({ status: true, result: result });
         }
         else {
-            res.json({ status: false, message: "Restaurant not found" });
+            res.json({ status: false, result: "Comment not found" });
         }
     }
     catch (err) {
         res.json({ status: false, message: err });
     }
 });
-exports.deleteRestaurant = deleteRestaurant;
+exports.deleteComment = deleteComment;

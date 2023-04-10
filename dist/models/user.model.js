@@ -20,8 +20,9 @@ const userSchema = new mongoose_1.Schema({
     password: String,
     point: [Number],
     userType: {
-        type: mongoose_1.Schema.Types.Mixed,
+        type: String,
         enum: ["Admin", "User"],
+        default: "User",
     },
     img: [],
     // lastLoginDate: Date,
