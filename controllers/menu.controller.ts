@@ -34,8 +34,13 @@ const updateMenu = async (req: Request, res: Response) => {
   const { id } = req.query;
 
   try {
-    const result = await Menu.findByIdAndUpdate(id, req.body);
-    res.json({ status: true, result });
+    const checkId = await Menu.findById(id)
+    if (checkId) {
+      const result = await Menu.findByIdAndUpdate(id, req.body);
+      res.json({ status: true, result });
+    } else {
+      res.json({ status: false, message: "Menu not found" })
+    }
   } catch (err) {
     res.json({ status: false, message: err });
   }
@@ -44,8 +49,13 @@ const updateMenu = async (req: Request, res: Response) => {
 const deleteMenu = async (req: Request, res: Response) => {
   const { id } = req.query;
   try {
-    const result = await Menu.findByIdAndDelete({ id });
-    res.json({ status: true, result });
+    const checkId = await Menu.findById(id)
+    if (checkId) {
+      const result = await Menu.findByIdAndDelete(id);
+      res.json({ status: true, result });
+    } else {
+      res.json({ status: false, message: "Menu not found" })
+    }
   } catch (err) {
     res.json({ status: false, message: err });
   }

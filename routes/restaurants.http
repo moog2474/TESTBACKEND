@@ -13,7 +13,7 @@ POST http://localhost:8080/api/restaurant
 Content-Type:  application/json
 
 {
-    "restaurantName": "Arig Anya Shangri-La",
+    "restaurantName": "The Bull",
     "address": 
       {
         "district": "Сүхбаатар дүүрэг",
@@ -51,14 +51,14 @@ Content-Type:  application/json
 
 
 ###
-DELETE http://localhost:8080/api/restaurant?id=64181528254fc0ac96d2f320
+DELETE http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a2
 
 ###
-PUT  http://localhost:8080/api/restaurant?id=642d5427e36e9ce7441dc528
+PUT  http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a2
 Content-Type: application/json
 
 { 
-   "restaurantName": "Anya Shangri-La",
+   "restaurantName": "dsa Shangri-La",
     "address": 
       {
         "district": "Сүхбаатар дүүрэг",
@@ -81,13 +81,13 @@ Content-Type: application/json
     "cuisineType": ["Mongolia"], 
     "contact": {
       "phone": 70007020,
-      "facebook": "https://www.facebook.com/ArigAnya",
+      "facebook": "",
       "Instagram": "none",
       "link": "none"
     },
     "email":"ffice@ariganya.com",
     "img": ["linkHere"],
-    "logoImg": "url here"
+    "logoImg": "url here",
     "schedule": {
       "weekday": { "open": 10, "close": 22 },
       "weekend": { "open": 10, "close": 20 }
