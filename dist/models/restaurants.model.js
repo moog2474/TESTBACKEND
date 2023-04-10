@@ -13,7 +13,6 @@ const restaurantsSchema = new mongoose_1.Schema({
             coordinates: [Number],
         },
     },
-    menuId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Menus", required: false },
     restaurantRate: [
         {
             rateType: {

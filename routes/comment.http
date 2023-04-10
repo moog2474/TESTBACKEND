@@ -4,7 +4,7 @@ GET http://localhost:8080/api/comments
 
 
 ### 
-GET http://localhost:8080/api/comment?id=64181528254fc0ac96d2f320
+GET http://localhost:8080/api/comment?id=642d5973e3f5928068566f8e
 
 
 //create
@@ -22,15 +22,15 @@ Content-Type:  application/json
   {
     "restaurantId": "642d5427e36e9ce7441dc528",
     "userId": "642d4cb3f18becf2efdc6a18",
-    "comment": "good",
-    "rate": 5
+    "comment": "bad",
+    "rate": 2
   }
 
 ###
-DELETE http://localhost:8080/api/comment?id=64181528254fc0ac96d2f320
+DELETE http://localhost:8080/api/comment?id=643393302cb9fd40b8b0b66a
 
 ###
-PUT  http://localhost:8080/api/comment?_id=6418155a254fc0ac96d2f324
+PUT  http://localhost:8080/api/comment?_id=642d5973e3f5928068566f8a
 Content-Type: application/json
 
 { 

@@ -25,9 +25,9 @@ const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getAll = getAll;
 const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { _id } = req.query;
+    const { id } = req.query;
     try {
-        const result = yield comments_model_1.default.findById(_id);
+        const result = yield comments_model_1.default.findById(id);
         res.json({ status: true, result });
     }
     catch (err) {
@@ -46,10 +46,16 @@ const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 });
 exports.createComment = createComment;
 const updateComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { _id } = req.query;
+    const { id } = req.query;
     try {
-        const result = yield comments_model_1.default.findByIdAndUpdate({ _id }, req.body);
-        res.json({ status: true, result });
+        const checkId = yield comments_model_1.default.findById(id);
+        if (checkId) {
+            const result = yield comments_model_1.default.findByIdAndUpdate(id, req.body);
+            res.json({ status: true, result: result });
+        }
+        else {
+            res.json({ status: false, result: "Comment not found" });
+        }
     }
     catch (err) {
         res.json({ status: false, message: err });
@@ -57,10 +63,16 @@ const updateComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 });
 exports.updateComment = updateComment;
 const deleteComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { _id } = req.query;
+    const { id } = req.query;
     try {
-        const result = yield comments_model_1.default.findByIdAndDelete({ _id });
-        res.json({ status: true, result });
+        const checkId = yield comments_model_1.default.findById(id);
+        if (checkId) {
+            const result = yield comments_model_1.default.findByIdAndDelete(id);
+            res.json({ status: true, result: result });
+        }
+        else {
+            res.json({ status: false, result: "Comment not found" });
+        }
     }
     catch (err) {
         res.json({ status: false, message: err });

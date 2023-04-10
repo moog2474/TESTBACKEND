@@ -25,9 +25,6 @@ const userSchema = new mongoose_1.Schema({
         default: "User",
     },
     img: [],
-    commentId: [
-        { type: mongoose_1.Schema.Types.ObjectId, ref: "Comments", required: false },
-    ],
     // lastLoginDate: Date,
 }, {
     collection: "Users",

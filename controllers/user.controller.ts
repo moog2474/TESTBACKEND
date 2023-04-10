@@ -107,8 +107,13 @@ const login = async (req: Request, res: Response) => {
 const updateUser = async (req: Request, res: Response) => {
   const { id } = req.query;
   try {
-    const result = await Users.findByIdAndUpdate(id, req.body);
-    res.json({ status: true, result });
+    const checkId = await Users.findById(id)
+    if (checkId) {
+      const result = await Users.findByIdAndUpdate(id, req.body);
+      res.json({ status: true, result });
+    } else {
+      res.json({ status: false, message: "User not found" })
+    }
   } catch (err) {
     res.json({ status: false, message: err });
   }
@@ -118,8 +123,13 @@ const updateUser = async (req: Request, res: Response) => {
 const deleteUser = async (req: Request, res: Response) => {
   const { id } = req.query;
   try {
-    const result = await Users.findByIdAndDelete(id);
-    res.json({ status: false, result });
+    const checkId = await Users.findById(id)
+    if (checkId) {
+      const result = await Users.findByIdAndDelete(id);
+      res.json({ status: true, result })
+    } else {
+      res.json({ status: false, message: "User not found" })
+    }
   } catch (err) {
     res.json({ status: false, message: err });
   }

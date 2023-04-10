@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const menuSchema = new mongoose_1.Schema({
-    // restaurantId: [{ type: Schema.Types.ObjectId, ref: "Restaurants" }],
+    restaurantId: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Restaurants" }],
     food: [
         {
             foodName: String,

@@ -48,8 +48,14 @@ exports.createRestaurant = createRestaurant;
 const updateRestaurant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     try {
-        const result = yield restaurants_model_1.default.findByIdAndUpdate(id, req.body);
-        res.json({ status: true, result });
+        const checkId = yield restaurants_model_1.default.findById(id);
+        if (checkId) {
+            const result = yield restaurants_model_1.default.findByIdAndUpdate(id, req.body);
+            res.json({ status: true, result });
+        }
+        else {
+            res.json({ status: false, message: "Restaurant not found" });
+        }
     }
     catch (err) {
         res.json({ status: false, message: err });
@@ -57,10 +63,16 @@ const updateRestaurant = (req, res) => __awaiter(void 0, void 0, void 0, functio
 });
 exports.updateRestaurant = updateRestaurant;
 const deleteRestaurant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { _id } = req.query;
+    const { id } = req.query;
     try {
-        const result = yield restaurants_model_1.default.findByIdAndDelete({ _id });
-        res.json({ status: true, result });
+        const checkId = yield restaurants_model_1.default.findById(id);
+        if (checkId) {
+            const result = yield restaurants_model_1.default.findByIdAndDelete(id);
+            res.json({ status: true, result });
+        }
+        else {
+            res.json({ status: false, message: "Restaurant not found" });
+        }
     }
     catch (err) {
         res.json({ status: false, message: err });
