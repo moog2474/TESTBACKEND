@@ -7,6 +7,8 @@ const commentSchema = new mongoose_1.Schema({
     userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     comment: String,
     rate: Number,
+}, {
+    timestamps: true,
 });
 const Comments = (0, mongoose_1.model)("Comments", commentSchema);
 exports.default = Comments;

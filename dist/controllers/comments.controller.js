@@ -27,8 +27,14 @@ exports.getAll = getAll;
 const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     try {
-        const result = yield comments_model_1.default.findById(id);
-        res.json({ status: true, result });
+        const data = yield comments_model_1.default.findById(id);
+        if (data) {
+            const result = yield comments_model_1.default.findById(id);
+            res.json({ status: true, result });
+        }
+        else {
+            res.json({ status: false, message: "Not Found" });
+        }
     }
     catch (err) {
         res.json({ status: false, message: err });

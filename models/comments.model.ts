@@ -9,13 +9,18 @@ interface IComment {
   rate: number | null;
 }
 
-const commentSchema = new Schema<IComment>({
-  restaurantId: { type: Schema.Types.ObjectId, ref: "Restaurants" },
-  foodId: { type: Schema.Types.ObjectId, ref: "Menu" },
-  userId: { type: Schema.Types.ObjectId, ref: "Users" },
-  comment: String,
-  rate: Number,
-});
+const commentSchema = new Schema<IComment>(
+  {
+    restaurantId: { type: Schema.Types.ObjectId, ref: "Restaurants" },
+    foodId: { type: Schema.Types.ObjectId, ref: "Menu" },
+    userId: { type: Schema.Types.ObjectId, ref: "Users" },
+    comment: String,
+    rate: Number,
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Comments = model<IComment>("Comments", commentSchema);
 

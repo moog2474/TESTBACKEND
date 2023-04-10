@@ -4,7 +4,7 @@ GET http://localhost:8080/api/restaurants
 
 
 ### 
-GET http://localhost:8080/api/restaurant?id=642d5427e36e9ce7441dc528
+GET http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a2
 
 
 //create
@@ -40,7 +40,7 @@ Content-Type:  application/json
       "Instagram": "none",
       "link": "none"
     },
-    "email":"ffice@ariganya.com",
+    "email":"Office@ariganya.com",
     "img": ["linkHere"],
     "logoImg": "url here",
     "schedule": {
@@ -51,14 +51,14 @@ Content-Type:  application/json
 
 
 ###
-DELETE http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a2
+DELETE http://localhost:8080/api/restaurant?id=6433afa9a38a3efc7d7e841a
 
 ###
-PUT  http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a2
+PUT  http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a1
 Content-Type: application/json
 
 { 
-   "restaurantName": "dsa Shangri-La",
+   "restaurantName": "dsakk Shangri-La",
     "address": 
       {
         "district": "Сүхбаатар дүүрэг",
@@ -85,7 +85,6 @@ Content-Type: application/json
       "Instagram": "none",
       "link": "none"
     },
-    "email":"ffice@ariganya.com",
     "img": ["linkHere"],
     "logoImg": "url here",
     "schedule": {
