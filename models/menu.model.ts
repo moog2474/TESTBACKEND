@@ -27,7 +27,7 @@ interface IMenu {
 
 const menuSchema = new Schema<IMenu>(
   {
-    restaurantId: [{ type: Schema.Types.ObjectId, ref: "Restaurants" }],
+    restaurantId: [{ type: Schema.Types.ObjectId, ref: "restaurants" }],
     food: [
       {
         foodName: String,
@@ -46,7 +46,7 @@ const menuSchema = new Schema<IMenu>(
           ],
         },
         commentId: [
-          { type: Schema.Types.ObjectId, ref: "Comments", required: false },
+          { type: Schema.Types.ObjectId, ref: "comments", required: false },
         ],
         ingredients: [String],
       },
@@ -58,13 +58,14 @@ const menuSchema = new Schema<IMenu>(
         price: Number,
         beveragesType: { type: String, enum: ["Coffee", "Achohol"] },
         commentId: [
-          { type: Schema.Types.ObjectId, ref: "Comments", required: false },
+          { type: Schema.Types.ObjectId, ref: "comments", required: false },
         ],
         ingredients: [{ type: String, required: false }],
       },
     ],
   },
   {
+    collection: "menus",
     timestamps: true,
   }
 );

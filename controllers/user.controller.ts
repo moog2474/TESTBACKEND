@@ -5,6 +5,18 @@ import { Request, Response } from "express";
 
 const uri: string = process.env.TOKEN_SECRET_KEY || "";
 
+
+
+const getTopUsers = async (req: Request, res: Response) => {
+  const result = await Users.aggregate([{ $unwind: '$point' }, { $group: { _id: { username: '$userName', img: '$img', comment: '$comment' }, points: { $sum: '$point' } } }]).sort({ points: -1 }).limit(10)
+  try {
+    res.json({ status: true, result })
+  }
+  catch (err) {
+    res.json({ status: false, result })
+  }
+}
+
 const getAll = async (req: Request, res: Response) => {
   const result = await Users.find();
 
@@ -135,4 +147,4 @@ const deleteUser = async (req: Request, res: Response) => {
   }
 };
 
-export { deleteUser, updateUser, login, register, getOne, getAll };
+export { deleteUser, updateUser, login, register, getOne, getAll, getTopUsers };

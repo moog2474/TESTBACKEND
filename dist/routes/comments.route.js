@@ -8,4 +8,5 @@ route.get("/comment", comments_controller_1.getOne);
 route.post("/comment", comments_controller_1.createComment);
 route.put("/comment", comments_controller_1.updateComment);
 route.delete("/comment", comments_controller_1.deleteComment);
+route.get("/comments/latestcomments", comments_controller_1.getLatestComments);
 exports.default = route;

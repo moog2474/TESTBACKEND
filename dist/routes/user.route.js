@@ -7,6 +7,7 @@ route.get("/users", user_controller_1.getAll);
 route.get("/user", user_controller_1.getOne);
 route.put("/user", user_controller_1.updateUser);
 route.delete("/user", user_controller_1.deleteUser);
+route.get("/users/topusers", user_controller_1.getTopUsers);
 route.post("/register", user_controller_1.register);
 route.post("/login", user_controller_1.login);
 exports.default = route;

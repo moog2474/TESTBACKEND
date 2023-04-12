@@ -13,7 +13,7 @@ POST http://localhost:8080/api/restaurant
 Content-Type:  application/json
 
 {
-    "restaurantName": "The Bull",
+    "restaurantName": "Arig Anya Shangrila",
     "address": 
       {
         "district": "Сүхбаатар дүүрэг",
@@ -51,7 +51,7 @@ Content-Type:  application/json
 
 
 ###
-DELETE http://localhost:8080/api/restaurant?id=6433afa9a38a3efc7d7e841a
+DELETE http://localhost:8080/api/restaurant?id=6434dd66eb172e7e3ed8258a
 
 ###
 PUT  http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a1

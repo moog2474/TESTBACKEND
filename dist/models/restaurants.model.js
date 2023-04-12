@@ -19,7 +19,7 @@ const restaurantsSchema = new mongoose_1.Schema({
                 type: String,
                 enum: ["foodRate", "serviceRate", "parkingRate", "interierDesign"],
             },
-            userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
+            userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "users" },
             score: Number,
             comment: String,
         },
@@ -43,7 +43,7 @@ const restaurantsSchema = new mongoose_1.Schema({
         weekend: { open: Number, close: Number },
     },
 }, {
-    collection: "Restaurants",
+    collection: "restaurants",
     timestamps: true,
 });
 const Restaurants = (0, mongoose_1.model)("Restaurants", restaurantsSchema);
