@@ -7,13 +7,8 @@ GET http://localhost:8080/api/comments
 GET http://localhost:8080/api/comment?id=64365594ecd15ae29bc3c030
 
 
-
 ###
 GET http://localhost:8080/api/comments/latestcomments
-
-
-
-
 
 
 //create
@@ -27,7 +22,6 @@ Content-Type:  application/json
 #     "rate": 5
 #   }
 
-
   {
     "restaurantId": "6436640d4da9fe33c872a065",
     "userId": "643663704fa5df76a9ed8f64",
@@ -36,12 +30,15 @@ Content-Type:  application/json
   }
 
 ###
-DELETE http://localhost:8080/api/comment?id=6436647e54a5873aef297d6e
+DELETE http://localhost:8080/api/comment?id=643664f2e7948e58e1177365
 
 ###
-PUT  http://localhost:8080/api/comment?id=642d5973e3f5928068566f8e
+PUT  http://localhost:8080/api/comment?id=6438052a6e01f136e49bcc98
 Content-Type: application/json
 
 { 
-  "userId": "643649b81d6cf78a11a92097"
+  "restaurantId": "6436640d4da9fe33c872a065",
+    "userId": "643663704fa5df76a9ed8f64",
+    "comment": "not ",
+    "rate": 3
 }
