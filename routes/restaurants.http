@@ -4,7 +4,7 @@ GET http://localhost:8080/api/restaurants
 
 
 ### 
-GET http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a2
+GET http://localhost:8080/api/restaurant?id=6436640d4da9fe33c872a065
 
 
 //create
@@ -40,7 +40,7 @@ Content-Type:  application/json
       "Instagram": "none",
       "link": "none"
     },
-    "email":"Office@ariganya.com",
+    "email":"Ofie@ariganya.com",
     "img": ["linkHere"],
     "logoImg": "url here",
     "schedule": {
@@ -51,10 +51,10 @@ Content-Type:  application/json
 
 
 ###
-DELETE http://localhost:8080/api/restaurant?id=6434e0ed57b518a9ff8e380e
+DELETE http://localhost:8080/api/restaurant?id=6436640d4da9fe33c872a065
 
 ###
-PUT  http://localhost:8080/api/restaurant?id=642e54364dbdb601b37980a1
+PUT  http://localhost:8080/api/restaurant?id=643803fa224ea68e2e09e186
 Content-Type: application/json
 
 { 
@@ -78,7 +78,7 @@ Content-Type: application/json
         "comment": "anhnii comment shuu hool goy"
       }
     ],
-    "cuisineType": ["Mongolia"], 
+    "cuisineType": ["Korea"], 
     "contact": {
       "phone": 70007020,
       "facebook": "",

@@ -28,7 +28,12 @@ const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     try {
         const result = yield comments_model_1.default.findById(id);
-        res.json({ status: true, result });
+        if (result) {
+            res.json({ status: true, result });
+        }
+        else {
+            res.json({ status: false, message: "Comment not found" });
+        }
     }
     catch (err) {
         res.json({ status: false, message: err });
