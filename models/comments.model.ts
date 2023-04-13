@@ -11,13 +11,14 @@ interface IComment {
 
 const commentSchema = new Schema<IComment>(
   {
-    restaurantId: { type: Schema.Types.ObjectId, ref: "Restaurants" },
-    foodId: { type: Schema.Types.ObjectId, ref: "Menu" },
-    userId: { type: Schema.Types.ObjectId, ref: "Users" },
+    restaurantId: { type: Schema.Types.ObjectId, ref: "restaurants" },
+    foodId: { type: Schema.Types.ObjectId, ref: "menus" },
+    userId: { type: Schema.Types.ObjectId, ref: "users" },
     comment: String,
     rate: Number,
   },
   {
+    collection: 'comments',
     timestamps: true,
   }
 );

@@ -39,7 +39,7 @@ const userSchema = new Schema<IUser>(
     // lastLoginDate: Date,
   },
   {
-    collection: "Users",
+    collection: "users",
     timestamps: true,
   }
 );

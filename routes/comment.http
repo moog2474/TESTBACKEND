@@ -4,7 +4,16 @@ GET http://localhost:8080/api/comments
 
 
 ### 
-GET http://localhost:8080/api/comment?id=642d5973e3f5928068566f8a
+GET http://localhost:8080/api/comment?id=64365594ecd15ae29bc3c030
+
+
+
+###
+GET http://localhost:8080/api/comments/latestcomments
+
+
+
+
 
 
 //create
@@ -20,19 +29,19 @@ Content-Type:  application/json
 
 
   {
-    "restaurantId": "642d5427e36e9ce7441dc528",
-    "userId": "642d4cb3f18becf2efdc6a18",
-    "comment": "bad",
-    "rate": 2
+    "restaurantId": "6436640d4da9fe33c872a065",
+    "userId": "643663704fa5df76a9ed8f64",
+    "comment": "not bad",
+    "rate": 3
   }
 
 ###
-DELETE http://localhost:8080/api/comment?id=643393302cb9fd40b8b0b66c
+DELETE http://localhost:8080/api/comment?id=6436647e54a5873aef297d6e
 
 ###
 PUT  http://localhost:8080/api/comment?id=642d5973e3f5928068566f8e
 Content-Type: application/json
 
 { 
-  "comment": "not good"
+  "userId": "643649b81d6cf78a11a92097"
 }

@@ -27,7 +27,7 @@ const userSchema = new mongoose_1.Schema({
     img: [],
     // lastLoginDate: Date,
 }, {
-    collection: "Users",
+    collection: "users",
     timestamps: true,
 });
 const Users = (0, mongoose_1.model)("Users", userSchema);

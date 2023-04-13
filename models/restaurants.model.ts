@@ -56,7 +56,7 @@ const restaurantsSchema = new Schema<IRestaurant>(
           type: String,
           enum: ["foodRate", "serviceRate", "parkingRate", "interierDesign"],
         },
-        userId: { type: Schema.Types.ObjectId, ref: "Users" },
+        userId: { type: Schema.Types.ObjectId, ref: "users" },
         score: Number,
         comment: String,
       },
@@ -81,7 +81,7 @@ const restaurantsSchema = new Schema<IRestaurant>(
     },
   },
   {
-    collection: "Restaurants",
+    collection: "restaurants",
     timestamps: true,
   }
 );

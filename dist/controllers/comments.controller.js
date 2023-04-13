@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAll = exports.getOne = exports.createComment = exports.updateComment = exports.deleteComment = void 0;
+exports.getLatestComments = exports.getAll = exports.getOne = exports.createComment = exports.updateComment = exports.deleteComment = void 0;
 const comments_model_1 = __importDefault(require("../models/comments.model"));
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -27,14 +27,8 @@ exports.getAll = getAll;
 const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     try {
-        const data = yield comments_model_1.default.findById(id);
-        if (data) {
-            const result = yield comments_model_1.default.findById(id);
-            res.json({ status: true, result });
-        }
-        else {
-            res.json({ status: false, message: "Not Found" });
-        }
+        const result = yield comments_model_1.default.findById(id);
+        res.json({ status: true, result });
     }
     catch (err) {
         res.json({ status: false, message: err });
@@ -85,3 +79,13 @@ const deleteComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.deleteComment = deleteComment;
+const getLatestComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield comments_model_1.default.find().sort({ createdAt: -1 }).limit(5);
+        res.json({ status: true, result });
+    }
+    catch (err) {
+        res.json({ status: false, message: err });
+    }
+});
+exports.getLatestComments = getLatestComments;

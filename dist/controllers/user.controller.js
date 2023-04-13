@@ -12,11 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAll = exports.getOne = exports.register = exports.login = exports.updateUser = exports.deleteUser = void 0;
+exports.getTopUsers = exports.getAll = exports.getOne = exports.register = exports.login = exports.updateUser = exports.deleteUser = void 0;
 const user_model_1 = __importDefault(require("../models/user.model"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const uri = process.env.TOKEN_SECRET_KEY || "";
+const getTopUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.default.aggregate([{ $unwind: '$point' }, { $group: { _id: { username: '$userName', img: '$img', comment: '$comment' }, points: { $sum: '$point' } } }]).sort({ points: -1 }).limit(10);
+    try {
+        res.json({ status: true, result });
+    }
+    catch (err) {
+        res.json({ status: false, result });
+    }
+});
+exports.getTopUsers = getTopUsers;
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_model_1.default.find();
     if (result) {
