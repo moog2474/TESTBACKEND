@@ -12,7 +12,7 @@ interface IRestaurant {
       coordinates: number[];
     };
   };
-  restaurantRate: [
+  restaurantRate?: [
     {
       rateType: string;
       userId: Types.ObjectId;
@@ -24,13 +24,13 @@ interface IRestaurant {
   // foodType: string[]; //Ene hereg baina uu? Menu dotroo foodtype beverageType tai ym chin?
   contact: {
     phone: number;
-    facebook: string;
-    Instagram: string;
-    link: string;
+    facebook?: string;
+    Instagram?: string;
+    link?: string;
   };
   email: string;
   img: string[];
-  logoImg: string | null;
+  logoImg?: string;
   schedule: {
     weekday: { open: number; close: number };
     weekend: { open: number; close: number };
