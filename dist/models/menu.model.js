@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const menuSchema = new mongoose_1.Schema({
-    restaurantId: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "restaurants" }],
+    restaurantId: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Restaurants" }],
     food: [
         {
             foodName: String,
@@ -20,9 +20,9 @@ const menuSchema = new mongoose_1.Schema({
                     "other",
                 ],
             },
-            commentId: [
-                { type: mongoose_1.Schema.Types.ObjectId, ref: "comments", required: false },
-            ],
+            // commentId: [
+            //   { type: Schema.Types.ObjectId, ref: "comments", required: false },
+            // ],
             ingredients: [String],
         },
     ],
@@ -33,7 +33,7 @@ const menuSchema = new mongoose_1.Schema({
             price: Number,
             beveragesType: { type: String, enum: ["Coffee", "Achohol"] },
             commentId: [
-                { type: mongoose_1.Schema.Types.ObjectId, ref: "comments", required: false },
+                { type: mongoose_1.Schema.Types.ObjectId, ref: "Comments", required: false },
             ],
             ingredients: [{ type: String, required: false }],
         },

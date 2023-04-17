@@ -1,4 +1,4 @@
-// import jwt from  "jsonwebtoken"
+// import jwt from "jsonwebtoken"
 // import { Request, Response } from "express";
 // const config = process.env;
 
@@ -26,3 +26,6 @@
 // };
 
 // module.exports = verifyToken;
+
+// login , create busad buh user function auth
+//

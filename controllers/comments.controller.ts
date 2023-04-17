@@ -66,13 +66,27 @@ const deleteComment = async (req: Request, res: Response) => {
 };
 
 const getLatestComments = async (req: Request, res: Response) => {
+
   try {
-    const result = await Comments.find().sort({ createdAt: -1 }).limit(5);
+    const result = await Comments.find().sort({ createdAt: -1 }).populate([{ path: 'userId', select: 'userName' }, { path: "restaurantId", select: "restaurantName " }]).limit(5);
     res.json({ status: true, result });
   } catch (err) {
+    console.log(err);
+
     res.json({ status: false, message: err });
   }
 };
+
+
+const getTopFood = async (req: Request, res: Response) => {
+  try {
+    const result = await Comments.find().populate([{ path: 'foodId', select: 'foodName' }])
+    res.json({ status: true, result })
+  } catch (err) {
+    res.json({ status: false, message: err })
+  }
+}
+
 
 export {
   deleteComment,
@@ -81,4 +95,5 @@ export {
   getOne,
   getAll,
   getLatestComments,
+  getTopFood
 };

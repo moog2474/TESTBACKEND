@@ -7,9 +7,18 @@ GET http://localhost:8080/api/comments
 GET http://localhost:8080/api/comment?id=64365594ecd15ae29bc3c030
 
 
-###
-GET http://localhost:8080/api/comments/latestcomments
 
+
+# ??? GET LATEST COMMENTS
+###
+GET http://localhost:8080/api/latestcomments
+
+
+
+### ??? GET TOP FOODS
+
+###
+POST http://localhost:8080/api/gettopfoods
 
 //create
 ### 
@@ -23,10 +32,10 @@ Content-Type:  application/json
 #   }
 
   {
-    "restaurantId": "6436640d4da9fe33c872a065",
+    "restaurantId": "643803fa224ea68e2e09e186",
     "userId": "643663704fa5df76a9ed8f64",
-    "comment": "not bad",
-    "rate": 3
+    "comment": "test comment populate",
+    "rate": 5
   }
 
 ###

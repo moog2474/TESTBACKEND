@@ -5,6 +5,8 @@ import {
   createRestaurant,
   getOne,
   getAll,
+  search,
+  getTopRestaurants
 } from "../controllers/restaurants.controller";
 
 const route = Router();
@@ -12,7 +14,11 @@ const route = Router();
 route.get("/restaurants", getAll);
 route.get("/restaurant", getOne);
 route.post("/restaurant", createRestaurant);
-route.put("/restaurant", updateRestaurant);
-route.delete("/restaurant", deleteRestaurant);
+route.post("/restaurant/search", search);
+route.get("/toprestaurants", getTopRestaurants)
+route.put("/restaurant", updateRestaurant); //auth
+route.delete("/restaurant", deleteRestaurant); // auth
+
+//login user 
 
 export default route;

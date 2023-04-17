@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const commentSchema = new mongoose_1.Schema({
-    restaurantId: { type: mongoose_1.Schema.Types.ObjectId, ref: "restaurants" },
-    foodId: { type: mongoose_1.Schema.Types.ObjectId, ref: "menus" },
-    userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "users" },
+    restaurantId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Restaurants" },
+    foodId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Menus" },
+    userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Users" },
     comment: String,
     rate: Number,
 }, {

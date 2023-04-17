@@ -12,8 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAll = exports.getOne = exports.createRestaurant = exports.updateRestaurant = exports.deleteRestaurant = void 0;
+exports.getTopRestaurants = exports.search = exports.getAll = exports.getOne = exports.createRestaurant = exports.updateRestaurant = exports.deleteRestaurant = void 0;
 const restaurants_model_1 = __importDefault(require("../models/restaurants.model"));
+const getTopRestaurants = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield restaurants_model_1.default.aggregate([{ $unwind: '$restaurantRate' }, { $group: { _id: { restaurantName: '$restaurantName', img: '$img' }, avg_score: { $avg: '$restaurantRate.score' } } }]).sort({ avg_score: -1 }).limit(3);
+        res.json({ status: true, result });
+    }
+    catch (err) {
+        res.json({ status: false, message: err });
+    }
+});
+exports.getTopRestaurants = getTopRestaurants;
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield restaurants_model_1.default.find();
@@ -85,3 +95,31 @@ const deleteRestaurant = (req, res) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.deleteRestaurant = deleteRestaurant;
+const search = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { pageSize, searchTxt } = req.body;
+    let search;
+    if (searchTxt) {
+        search = {
+            $or: [
+                { restaurantName: { $regex: searchTxt, $options: 'i' } }
+            ]
+        };
+    }
+    else {
+        search = {};
+    }
+    try {
+        const rowCount = yield restaurants_model_1.default.find(search).count();
+        const result = yield restaurants_model_1.default.find(search).limit(9).skip(9 * (pageSize - 1));
+        if (result.length > 0) {
+            res.json({ status: true, result, totalRow: rowCount });
+        }
+        else {
+            res.json({ status: false, message: "not found" });
+        }
+    }
+    catch (err) {
+        res.json({ status: false, message: err });
+    }
+});
+exports.search = search;

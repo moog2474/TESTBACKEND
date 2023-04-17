@@ -34,13 +34,14 @@ Content-Type:  application/json
   }
 
 ###
-DELETE http://localhost:8080/api/menu?id=643663ac2b08284989efda3c
+DELETE http://localhost:8080/api/menu?id=643804a8224ea68e2e09e1d7
 
 ###
-PUT  http://localhost:8080/api/menu?id=643663ac2b08284989efda3c
+PUT  http://localhost:8080/api/menu?id=64380462224ea68e2e09e1ab
 Content-Type: application/json
 
 { 
+  "restaurantId": "64380408224ea68e2e09e18c",
   "food": [
     {
       "foodName": "Ar",

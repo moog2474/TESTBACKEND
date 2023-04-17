@@ -11,8 +11,8 @@ const route = Router();
 
 route.get("/menus", getAll);
 route.get("/menu", getOne);
-route.post("/menu", createMenu);
-route.put("/menu", updateMenu);
-route.delete("/menu", deleteMenu);
+route.post("/menu", createMenu); //auth
+route.put("/menu", updateMenu); //auth 
+route.delete("/menu", deleteMenu); //auth
 
 export default route;
