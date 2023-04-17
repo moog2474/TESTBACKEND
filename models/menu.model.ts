@@ -9,7 +9,7 @@ interface IMenu {
       img: string[];
       price: number;
       foodType: string; // enum [soup, beverage, setFood]
-      commentId: Types.ObjectId | null;
+      // commentId: Types.ObjectId | null;
       ingredients: string[];
     }
   ];
@@ -19,7 +19,7 @@ interface IMenu {
       img: string[];
       price: number;
       beveragesType: string; // enum [soup beverage, setFood]
-      commentId: Types.ObjectId | null;
+      // commentId: Types.ObjectId | null;
       ingredients: string[] | null;
     }
   ];
@@ -27,7 +27,7 @@ interface IMenu {
 
 const menuSchema = new Schema<IMenu>(
   {
-    restaurantId: [{ type: Schema.Types.ObjectId, ref: "restaurants" }],
+    restaurantId: [{ type: Schema.Types.ObjectId, ref: "Restaurants" }],
     food: [
       {
         foodName: String,
@@ -45,9 +45,9 @@ const menuSchema = new Schema<IMenu>(
             "other",
           ],
         },
-        commentId: [
-          { type: Schema.Types.ObjectId, ref: "comments", required: false },
-        ],
+        // commentId: [
+        //   { type: Schema.Types.ObjectId, ref: "comments", required: false },
+        // ],
         ingredients: [String],
       },
     ],
@@ -58,7 +58,7 @@ const menuSchema = new Schema<IMenu>(
         price: Number,
         beveragesType: { type: String, enum: ["Coffee", "Achohol"] },
         commentId: [
-          { type: Schema.Types.ObjectId, ref: "comments", required: false },
+          { type: Schema.Types.ObjectId, ref: "Comments", required: false },
         ],
         ingredients: [{ type: String, required: false }],
       },

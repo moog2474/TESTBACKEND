@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLatestComments = exports.getAll = exports.getOne = exports.createComment = exports.updateComment = exports.deleteComment = void 0;
+exports.getTopFood = exports.getLatestComments = exports.getAll = exports.getOne = exports.createComment = exports.updateComment = exports.deleteComment = void 0;
 const comments_model_1 = __importDefault(require("../models/comments.model"));
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -86,11 +86,22 @@ const deleteComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.deleteComment = deleteComment;
 const getLatestComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield comments_model_1.default.find().sort({ createdAt: -1 }).limit(5);
+        const result = yield comments_model_1.default.find().sort({ createdAt: -1 }).populate([{ path: 'userId', select: 'userName' }, { path: "restaurantId", select: "restaurantName " }]).limit(5);
+        res.json({ status: true, result });
+    }
+    catch (err) {
+        console.log(err);
+        res.json({ status: false, message: err });
+    }
+});
+exports.getLatestComments = getLatestComments;
+const getTopFood = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield comments_model_1.default.find().populate([{ path: 'foodId', select: 'foodName' }]);
         res.json({ status: true, result });
     }
     catch (err) {
         res.json({ status: false, message: err });
     }
 });
-exports.getLatestComments = getLatestComments;
+exports.getTopFood = getTopFood;

@@ -1,5 +1,5 @@
 "use strict";
-// import jwt from  "jsonwebtoken"
+// import jwt from "jsonwebtoken"
 // import { Request, Response } from "express";
 // const config = process.env;
 // const verifyToken = (req: Request, res: Response) => {
@@ -23,3 +23,5 @@
 //     // return next();
 // };
 // module.exports = verifyToken;
+// login , create busad buh user function auth
+//

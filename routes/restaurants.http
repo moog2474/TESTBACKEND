@@ -3,8 +3,14 @@
 GET http://localhost:8080/api/restaurants
 
 
+
+//TOP RESTAURANTs
+###
+GET http://localhost:8080/api/toprestaurants
+
+
 ### 
-GET http://localhost:8080/api/restaurant?id=6436640d4da9fe33c872a065
+GET http://localhost:8080/api/restaurant?id=64380408224ea68e2e09e18c
 
 
 //create
@@ -31,7 +37,7 @@ Content-Type:  application/json
         "userId": "642d4cb3f18becf2efdc6a18",
         "score": 5,
         "comment": "anhnii comment shuu hool goy"
-      }
+      },
     ],
     "cuisineType": ["Mongolia"],
     "contact": {
@@ -76,6 +82,12 @@ Content-Type: application/json
         "userId": "642d4cb3f18becf2efdc6a18",
         "score": 5,
         "comment": "anhnii comment shuu hool goy"
+      },
+      {
+         "rateType": "foodRate",
+        "userId": "642d4cb3f18becf2efdc6a18",
+        "score": 2,
+        "comment": "anhnii comment shuu hool goy"
       }
     ],
     "cuisineType": ["Korea"], 
@@ -91,4 +103,27 @@ Content-Type: application/json
       "weekday": { "open": 10, "close": 22 },
       "weekend": { "open": 10, "close": 20 }
     }
+}
+
+
+
+###
+POST http://localhost:8080/api/restaurant/search
+Content-Type: application/json
+
+{
+  "searchTxt": "arig"
+}
+
+
+
+### 
+POST http://localhost:8080/api/search
+Content-Type: application/json
+
+{
+  "price" : "10000-15000", // null 
+  "rate" : "", // null, 1ees , 2oos , 3oos, 4uus
+  "location" : "" ,//buseer tuv, baruun , zuun (location range)
+  "cuisineType" : ""// enum
 }

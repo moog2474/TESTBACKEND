@@ -1,6 +1,7 @@
 import Menu from "../models/menu.model";
 import { Request, Response } from "express";
 
+
 const getAll = async (req: Request, res: Response) => {
   try {
     const result = await Menu.find();
