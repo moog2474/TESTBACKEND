@@ -6,7 +6,7 @@ import {
   updateComment,
   deleteComment,
   getLatestComments,
-  // getTopFood,
+  getTopFood,
 } from "../controllers/comments.controller";
 
 const route = Router();
@@ -17,6 +17,6 @@ route.post("/comment", createComment); //auth
 route.put("/comment", updateComment); //hereggui 
 route.delete("/comment", deleteComment); // hereggui 
 route.get("/latestcomments", getLatestComments)
-// route.get("/gettopfoods", getTopFood)
+route.get("/gettopfoods", getTopFood)
 
 export default route;

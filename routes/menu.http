@@ -1,47 +1,33 @@
 //RESTAURANTS
 ### 
-GET http://localhost:8080/api/menus
+GET http://localhost:9000/api/menus
 
 
 ### 
-GET http://localhost:8080/api/menu?id=643663ac2b08284989efda3c
+GET http://localhost:9000/api/menu?id=643663ac2b08284989efda3c
 
 
 //create
 ### 
-POST http://localhost:8080/api/menu
+POST http://localhost:9000/api/menu
 Content-Type:  application/json
 
 {
-  "restaurantId": "642d5427e36e9ce7441dc528",
-  "food": [
-    {
-      "foodName": "Arig Ramen",
-      "img": ["https://scontent.fuln2-2.fna.fbcdn.net/v/t39.30808-6/339317273_132602239751153_6489815128200508610_n.jpg?stp=cp6_dst-jpg_p526x296&_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=XZ9Uh1Uq3_YAX-J4S2n&_nc_ht=scontent.fuln2-2.fna&oh=00_AfBqAbfokoXcciG08QZVxOTrkd5-VWylWPRyJk56g1VEhw&oe=6432B585"],
-      "price": 14000,
-      "foodType": "soup",
-      "ingredients": ["max", "nogoo"]
-    }
-  ],
-  "beverages": [
-    {
-      "beverageName": "Long",
-      "img": ["asgasg"],
-      "price": 10000,
-      "beveragesType":"Coffee"
-    }
-  ]
-  }
+  "restaurantId": "643e6eff34d6ab3068e43938",
+  "foodId": "",
+  "beverageId": ""
+  
+}
 
 ###
-DELETE http://localhost:8080/api/menu?id=643804a8224ea68e2e09e1d7
+DELETE http://localhost:9000/api/menu?id=643804a8224ea68e2e09e1d7
 
 ###
-PUT  http://localhost:8080/api/menu?id=64380462224ea68e2e09e1ab
+PUT  http://localhost:9000/api/menu?id=64380462224ea68e2e09e1ab
 Content-Type: application/json
 
 { 
-  "restaurantId": "64380408224ea68e2e09e18c",
+  "restaurantId": "643e6eff34d6ab3068e43938",
   "food": [
     {
       "foodName": "Ar",

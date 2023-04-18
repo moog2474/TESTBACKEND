@@ -53,7 +53,7 @@ const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getOne = getOne;
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, userName, email, phone, password, point, userType, img, commentId, } = req.body;
+    const { name, userName, email, phone, password, point, userType, img } = req.body;
     if (!email || !password) {
         res.json({ status: false, message: "Medeellee buren oruulna uu" });
         return;
@@ -68,8 +68,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             password: hashedPass,
             point,
             userType,
-            img,
-            commentId,
+            img
         });
         const result = yield newUser.save();
         if (result) {

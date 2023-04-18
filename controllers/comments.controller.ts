@@ -1,5 +1,6 @@
 import Comments from "../models/comments.model";
 import { Request, Response } from "express";
+import Foods from "../models/food.model";
 
 const getAll = async (req: Request, res: Response) => {
   try {
@@ -26,10 +27,24 @@ const getOne = async (req: Request, res: Response) => {
 };
 
 const createComment = async (req: Request, res: Response) => {
+  const food = req.body.foodId
+  console.log(food);
+
   try {
     const result = await Comments.create(req.body);
-    res.json({ status: true, result });
+
+
+    const avg = await Comments.find({ foodId: food })
+    const avg = await Comments.aggregate([{ $match: { foodId: food } },
+    { $group: { _id: '$foodId', avg_rate: { $avg: '$rate' } } }
+    ])
+
+    // const last = await Foods.findByIdAndUpdate(food, { rate: avg.avg_rate })
+
+    res.json({ status: true, result, avg });
   } catch (err) {
+    console.log(err);
+
     res.json({ status: false, message: err });
   }
 };
@@ -80,7 +95,9 @@ const getLatestComments = async (req: Request, res: Response) => {
 
 const getTopFood = async (req: Request, res: Response) => {
   try {
-    const result = await Comments.find().populate([{ path: 'foodId', select: 'foodName' }])
+    const result = await Comments.aggregate([
+      { $group: { _id: '$foodId', avg_rate: { $avg: '$rate' } } }
+    ]).sort({ avg_rate: -1 }).limit(6)
     res.json({ status: true, result })
   } catch (err) {
     res.json({ status: false, message: err })

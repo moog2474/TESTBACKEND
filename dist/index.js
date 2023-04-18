@@ -10,6 +10,8 @@ const restaurants_route_1 = __importDefault(require("./routes/restaurants.route"
 const menu_route_1 = __importDefault(require("./routes/menu.route"));
 const user_route_1 = __importDefault(require("./routes/user.route"));
 const comments_route_1 = __importDefault(require("./routes/comments.route"));
+const foods_route_1 = __importDefault(require("./routes/foods.route"));
+const beverages_route_1 = __importDefault(require("./routes/beverages.route"));
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 dotenv_1.default.config();
@@ -25,6 +27,8 @@ app.use("/api", user_route_1.default);
 app.use("/api", restaurants_route_1.default);
 app.use("/api", menu_route_1.default);
 app.use("/api", comments_route_1.default);
+app.use("/api", foods_route_1.default);
+app.use("/api", beverages_route_1.default);
 app.get("/api", (req, res) => {
     res.send("<h1>Hello MongoDB from NodeJS</h1>");
 });

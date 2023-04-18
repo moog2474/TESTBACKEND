@@ -52,8 +52,7 @@ const register = async (req: Request, res: Response) => {
     password,
     point,
     userType,
-    img,
-    commentId,
+    img
   } = req.body;
 
   if (!email || !password) {
@@ -71,8 +70,7 @@ const register = async (req: Request, res: Response) => {
       password: hashedPass,
       point,
       userType,
-      img,
-      commentId,
+      img
     });
 
     const result = await newUser.save();

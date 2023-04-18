@@ -1,22 +1,22 @@
 //RESTAURANTS
 ### 
-GET http://localhost:8080/api/users
+GET http://localhost:9000/api/users
 
 ###
-GET http://localhost:8080/api/users/topusers
+GET http://localhost:9000/api/users/topusers
 
 ### 
-GET http://localhost:8080/api/user?id=643663704fa5df76a9ed8f64
+GET http://localhost:9000/api/user?id=643663704fa5df76a9ed8f64
 
 //create
 ### 
-POST http://localhost:8080/api/register
+POST http://localhost:9000/api/register
 Content-Type:  application/json
 
 {
-   "name": "Test2",
-   "userName": "Test2",
-   "email": "test2@gmail.com",
+   "name": "Moog",
+   "userName": "Moog",
+   "email": "moog@gmail.com",
    "phone": 88769926,
    "password": "moog1234!",
    "point": [
@@ -27,10 +27,10 @@ Content-Type:  application/json
 }
 
 ###
-DELETE http://localhost:8080/api/user?id=64380381224ea68e2e09e176
+DELETE http://localhost:9000/api/user?id=64380381224ea68e2e09e176
 
 ###
-PUT  http://localhost:8080/api/user?id=643663704fa5df76a9ed8f64
+PUT  http://localhost:9000/api/user?id=643663704fa5df76a9ed8f64
 Content-Type: application/json
 
 {

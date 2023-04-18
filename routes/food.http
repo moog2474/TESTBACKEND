@@ -1,0 +1,37 @@
+#  ~~~ GET ALL FOODS ~~~
+###
+GET http://localhost:9000/api/foods
+
+
+# ~~~ GET 1 FOOD ~~~
+###
+GET http://localhost:9000/api/food?id=643e74d312b52208eb916aad
+
+
+# ~~~ ADD FOOD ~~~
+###
+POST http://localhost:9000/api/foods
+Content-Type: application/json
+
+{   
+    "foodName": "soup",
+    "price": 8000,
+    "foodType": "soup",
+    "img": ["Links here"],
+    "rate": 4.5,
+    "ingredients": ["flour","water","salt"]
+}
+
+# ~~~ UPDATE FOOD ~~~
+###
+PUT http://localhost:9000/api/food?id=643e77267bbb3606eb8f1eac
+Content-Type: application/json
+
+{
+   
+    "rate" : 4.8
+}
+
+# ~~~ DELETE FOOD ~~~
+###
+DELETE http://localhost:9000/api/food?id=643e74d312b52208eb916aad

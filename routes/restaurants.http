@@ -1,21 +1,21 @@
 //RESTAURANTS
 ### 
-GET http://localhost:8080/api/restaurants
+GET http://localhost:9000/api/restaurants
 
 
 
 //TOP RESTAURANTs
 ###
-GET http://localhost:8080/api/toprestaurants
+GET http://localhost:9000/api/toprestaurants
 
 
 ### 
-GET http://localhost:8080/api/restaurant?id=64380408224ea68e2e09e18c
+GET http://localhost:9000/api/restaurant?id=64380408224ea68e2e09e18c
 
 
 //create
 ### 
-POST http://localhost:8080/api/restaurant
+POST http://localhost:9000/api/restaurant
 Content-Type:  application/json
 
 {
@@ -32,12 +32,6 @@ Content-Type:  application/json
         }
       },
        "restaurantRate": [
-      {
-        "rateType": "foodRate",
-        "userId": "642d4cb3f18becf2efdc6a18",
-        "score": 5,
-        "comment": "anhnii comment shuu hool goy"
-      },
     ],
     "cuisineType": ["Mongolia"],
     "contact": {
@@ -46,7 +40,7 @@ Content-Type:  application/json
       "Instagram": "none",
       "link": "none"
     },
-    "email":"Ofie@ariganya.com",
+    "email":"Office@ariganya.com",
     "img": ["linkHere"],
     "logoImg": "url here",
     "schedule": {
@@ -57,10 +51,10 @@ Content-Type:  application/json
 
 
 ###
-DELETE http://localhost:8080/api/restaurant?id=6436640d4da9fe33c872a065
+DELETE http://localhost:9000/api/restaurant?id=6436640d4da9fe33c872a065
 
 ###
-PUT  http://localhost:8080/api/restaurant?id=643803fa224ea68e2e09e186
+PUT  http://localhost:9000/api/restaurant?id=643803fa224ea68e2e09e186
 Content-Type: application/json
 
 { 
@@ -108,7 +102,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:8080/api/restaurant/search
+POST http://localhost:9000/api/restaurant/search
 Content-Type: application/json
 
 {
@@ -118,7 +112,7 @@ Content-Type: application/json
 
 
 ### 
-POST http://localhost:8080/api/search
+POST http://localhost:9000/api/search
 Content-Type: application/json
 
 {

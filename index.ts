@@ -5,6 +5,9 @@ import restaurantRouter from "./routes/restaurants.route";
 import menuRouter from "./routes/menu.route";
 import userRouter from "./routes/user.route";
 import commentRouter from "./routes/comments.route";
+import foodsRouter from "./routes/foods.route";
+import beveragesRouter from './routes/beverages.route';
+
 import cors from "cors";
 
 const app: Express = express();
@@ -24,6 +27,9 @@ app.use("/api", userRouter);
 app.use("/api", restaurantRouter);
 app.use("/api", menuRouter);
 app.use("/api", commentRouter);
+app.use("/api", foodsRouter);
+app.use("/api", beveragesRouter);
+
 
 app.get("/api", (req: Request, res: Response) => {
   res.send("<h1>Hello MongoDB from NodeJS</h1>");

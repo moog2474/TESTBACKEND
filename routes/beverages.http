@@ -1,0 +1,39 @@
+#  ~~~ GET ALL BEVERAGES ~~~
+###
+GET http://localhost:9000/api/beverages
+
+
+# ~~~ GET 1 BEVERAGE ~~~
+###
+GET http://localhost:9000/api/beverage?id=643e75ce7bbb3606eb8f1e8a
+
+
+# ~~~ ADD BEVERAGE ~~~
+###
+POST http://localhost:9000/api/beverages
+Content-Type: application/json
+
+{
+
+    "beverageName": "Ballentines",
+    "price": 110000,
+    "beverageType": "alchohol",
+    "img": ["Links here"]
+}
+
+# ~~~ UPDATE BEVERAGE ~~~
+###
+PUT http://localhost:9000/api/beverage?id=643e75ce7bbb3606eb8f1e8a
+Content-Type: application/json
+
+{
+    "menuId": "",
+    "beverageName": "",
+    "price": ,
+    "beverageType": "",
+    "img": ["Links here"],
+}
+
+# ~~~ DELETE BEVERAGE ~~~
+###
+DELETE http://localhost:9000/api/beverage?id=643e75ce7bbb3606eb8f1e8a
